@@ -1,0 +1,15 @@
+{
+  "name": "gh-cleanup-notifications",
+  "version": "1.0.0",
+  "description": "gh cli extension to clean up notifications in GitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mswjs/interceptors": "^0.35.8"
+  }
+}
