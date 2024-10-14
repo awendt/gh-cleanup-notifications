@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+# Determine if an executable is in the PATH
+if ! type -p node >/dev/null; then
+   echo "Node not found on the system" >&2
+   exit 1
+fi
+
+exec node index.js "$@"
