@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint .",
     "test": "node --test"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@mswjs/interceptors": "^0.35.8",
+    "eslint": "^9.14.0",
     "semantic-release": "^24.2.0"
   },
   "release": {

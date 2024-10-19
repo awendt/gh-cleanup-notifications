@@ -26,5 +26,8 @@ jobs:
       - name: NPM install
         run: npm ci
 
+      - name: Lint Javascript code
+        run: npm run lint
+
       - name: Test Javascript code
         run: npm run test
