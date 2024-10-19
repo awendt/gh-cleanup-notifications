@@ -4,6 +4,7 @@
   "number": 45,
   "state": "open",
   "title": "Breaking change: Unify support for resource-specific tags",
+  "assignee": "jansiwy",
   "user": {
     "login": "jansiwy",
     "id": 610800,
