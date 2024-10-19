@@ -9,7 +9,7 @@ let options = process.argv
             .map(arg => arg.slice(2))
             .reduce((acc, arg) => {
               const [option, value] = arg.indexOf("=") === -1 ? [arg, true] : arg.split("=");
-              return Object.assign(acc, { [option.replaceAll(/-([a-z])/gi, (_match, char, ..._args) => char.toUpperCase())]: value });
+              return Object.assign(acc, { [option.replaceAll(/-([a-z])/gi, (_match, char) => char.toUpperCase())]: value });
             }, {});
 
 console.debug(options);

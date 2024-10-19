@@ -1,6 +1,5 @@
 import assert from 'node:assert';
-import { describe, it, beforeEach, afterEach } from 'node:test';
-import { FetchInterceptor } from '@mswjs/interceptors/fetch'
+import { describe, it } from 'node:test';
 import { NotificationReducer } from '../lib/notification-reducer.js';
 
 import path from 'path';
@@ -59,7 +58,7 @@ describe('Reducer', async () => {
     ]);
   });
 
-  it('returns closed PRs #notificationsForClosedPRs', async (t) => {
+  it('returns closed PRs #notificationsForClosedPRs', async () => {
     const reducer = new NotificationReducer({ github, notifications });
     reducer.pullRequests = [ pr21, pr45 ];
 
@@ -67,7 +66,7 @@ describe('Reducer', async () => {
     assert.equal(reducer.notificationsForClosedPRs[0].subject.url, "https://api.github.com/repos/babbel/terraform-aws-acm/pulls/21");
   });
 
-  it('returns closed PRs #notificationsForReassignedPRs', async (t) => {
+  it('returns closed PRs #notificationsForReassignedPRs', async () => {
     const notifications = await github.notifications();
     const reducer = new NotificationReducer({ github, notifications, me: 'awendt' });
     reducer.pullRequests = [ pr21, pr45 ];
@@ -76,7 +75,7 @@ describe('Reducer', async () => {
     assert.equal(reducer.notificationsForReassignedPRs[0].subject.url, "https://api.github.com/repos/babbel/terraform-aws-athena/pulls/45");
   });
 
-  it('returns closed PRs #notificationsForReviewedPRs', async (t) => {
+  it('returns closed PRs #notificationsForReviewedPRs', async () => {
     const notifications = await github.notifications();
     const reducer = new NotificationReducer({ github, notifications });
     reducer.pullRequests = [ pr21, pr45 ];

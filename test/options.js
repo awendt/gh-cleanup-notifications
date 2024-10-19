@@ -11,7 +11,7 @@ describe('dryRun: true', async () => {
 
     interceptor.on('unhandledException', ({ error }) => console.log(error));
 
-    interceptor.on('request', ({ request, controller }) => {
+    interceptor.on('request', ({ controller }) => {
       controller.respondWith(Response.error())
     });
   });
