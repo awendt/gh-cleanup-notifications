@@ -1,4 +1,4 @@
-import assert from 'node:assert';
+import assert from 'node:assert/strict';
 import { describe, it, beforeEach, afterEach } from 'node:test';
 import { FetchInterceptor } from '@mswjs/interceptors/fetch'
 import { GitHubClient } from '../lib/client.js';
@@ -50,7 +50,7 @@ describe('checking for new notifications', async () => {
 
     describe('when HEAD request responds with 304', async () => {
       beforeEach(() => {
-        headResponse = new Response(null, { status: 304, headers: { 'x-poll-interval': 123 } });
+        headResponse = new Response(null, { status: 304, headers: { 'x-poll-interval': '123' } });
       });
 
       it('has no new notifications', async () => {
@@ -65,13 +65,13 @@ describe('checking for new notifications', async () => {
 
         await github.notifications();
         await github.hasNewNotifications();
-        assert.equal(github.pollInterval, 123);
+        assert.equal(github.pollInterval, '123');
       });
     });
 
     describe('when HEAD request responds with 200', async () => {
       beforeEach(() => {
-        headResponse = Response.json( [], { status: 200, headers: { 'X-Poll-Interval': 123 } });
+        headResponse = Response.json( [], { status: 200, headers: { 'X-Poll-Interval': '123' } });
       });
 
       it('has new notifications', async () => {
@@ -86,7 +86,7 @@ describe('checking for new notifications', async () => {
 
         await github.notifications();
         await github.hasNewNotifications();
-        assert.equal(github.pollInterval, 123);
+        assert.equal(github.pollInterval, '123');
       });
     });
 

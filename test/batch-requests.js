@@ -1,4 +1,4 @@
-import assert from 'node:assert';
+import assert from 'node:assert/strict';
 import { describe, it, beforeEach, afterEach, mock } from 'node:test';
 import { FetchInterceptor } from '@mswjs/interceptors/fetch'
 import { GitHubClient } from '../lib/client.js';
