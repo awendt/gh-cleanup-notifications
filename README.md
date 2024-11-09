@@ -29,6 +29,9 @@ and watch the extension fetch information about each pull request in your notifi
 
 Notifications will be polled every minute, making use of the `Last-Modified` request header and adhering to the `X-Poll-Interval` response header as described [in this doc](https://docs.github.com/en/rest/activity/notifications?apiVersion=2022-11-28).
 
+> [!NOTE]
+> The extension only takes **unread notifications** into account.
+
 ## Options
 
 You can choose exactly which notifications will be cleaned up. By default, no notifications will be cleaned up.
