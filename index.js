@@ -35,6 +35,7 @@ const doWork = async () => {
   if (options.cleanupReassignedPrs) {
     const someoneElseAssigned = reducer.notificationsForReassignedPRs;
     console.debug("%d notifications for PRs assigned to someone else, unsubscribing…", someoneElseAssigned.length);
+    someoneElseAssigned.forEach(notification => console.debug(notification.pull_request.html_url));
     await github.unsubscribe(someoneElseAssigned);
   }
 
