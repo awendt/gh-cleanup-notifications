@@ -39,7 +39,7 @@ const doWork = async () => {
   }
 
   // Case 3: review requested but no reviews pending
-  if (options.cleanupReviewPrs) {
+  if (options.cleanupReviewedPrs) {
     const reviewRequestedAndReviewed = reducer.notificationsForReviewedPRs;
     console.debug("%d notifications for PRs requesting and gotten reviews, unsubscribing…", reviewRequestedAndReviewed.length);
     await github.unsubscribe(reviewRequestedAndReviewed);
