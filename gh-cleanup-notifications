@@ -7,4 +7,6 @@ if ! type -p node >/dev/null; then
    exit 1
 fi
 
+export GITHUB_TOKEN=$(gh auth token)
+
 exec node index.js "$@"
