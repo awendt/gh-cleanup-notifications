@@ -46,6 +46,7 @@ describe('Reducer', async () => {
       'number',
       'state',
       'title',
+      'assignee',
       'user',
       'body',
       'created_at',

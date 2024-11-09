@@ -4,6 +4,7 @@
   "number": 21,
   "state": "closed",
   "title": "Add support for resource-specific tags",
+  "assignee": null,
   "user": {
     "login": "jansiwy",
     "id": 610800,
