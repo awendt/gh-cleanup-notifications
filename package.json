@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@mswjs/interceptors": "^0.35.8"
+    "@mswjs/interceptors": "^0.35.8",
+    "semantic-release": "^24.2.0"
   }
 }
