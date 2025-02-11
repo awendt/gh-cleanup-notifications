@@ -1,0 +1,21 @@
+version: 2
+
+updates:
+- package-ecosystem: github-actions
+  commit-message:
+    prefix: chore(deps)
+  directory: /
+  schedule:
+    interval: weekly
+    day: friday
+    time: "18:00"
+    timezone: Europe/Berlin
+- package-ecosystem: npm
+  commit-message:
+    prefix: chore(deps)
+  directory: /
+  schedule:
+    interval: weekly
+    day: friday
+    time: "18:00"
+    timezone: Europe/Berlin
