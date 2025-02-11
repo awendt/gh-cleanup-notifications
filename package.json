@@ -16,6 +16,11 @@
     "eslint": "^9.20.0",
     "semantic-release": "^24.2.0"
   },
+  "commitlint": {
+    "rules": {
+      "body-max-line-length": [0, "always"]
+    }
+  },
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
