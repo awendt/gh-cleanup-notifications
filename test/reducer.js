@@ -29,14 +29,14 @@ const [ pr21, pr45 ] = [
 
 describe('Reducer', async () => {
   it('returns pull notifications on #pullNotifications', async () => {
-    const reducer = new NotificationReducer({ github, notifications });
+    const reducer = new NotificationReducer({ notifications });
 
     assert.equal(notifications.length, 3);
     assert.equal(reducer.pullNotifications.length, 2);
   });
 
   it('returns notifications + PR info on #notificationsWithPullRequests', async () => {
-    const reducer = new NotificationReducer({ github, notifications });
+    const reducer = new NotificationReducer({ notifications });
     reducer.pullRequests = [ pr21, pr45 ];
 
     assert.equal(reducer.notificationsWithPullRequests.length, 2);
@@ -60,7 +60,7 @@ describe('Reducer', async () => {
   });
 
   it('returns closed PRs #notificationsForClosedPRs', async () => {
-    const reducer = new NotificationReducer({ github, notifications });
+    const reducer = new NotificationReducer({ notifications });
     reducer.pullRequests = [ pr21, pr45 ];
 
     assert.equal(reducer.notificationsForClosedPRs.length, 1);
@@ -69,7 +69,7 @@ describe('Reducer', async () => {
 
   it('returns closed PRs #notificationsForReassignedPRs', async () => {
     const notifications = await github.notifications();
-    const reducer = new NotificationReducer({ github, notifications, me: 'awendt' });
+    const reducer = new NotificationReducer({ notifications, me: 'awendt' });
     reducer.pullRequests = [ pr21, pr45 ];
 
     assert.equal(reducer.notificationsForReassignedPRs.length, 1);
@@ -78,7 +78,7 @@ describe('Reducer', async () => {
 
   it('returns closed PRs #notificationsForReviewedPRs', async () => {
     const notifications = await github.notifications();
-    const reducer = new NotificationReducer({ github, notifications });
+    const reducer = new NotificationReducer({ notifications });
     reducer.pullRequests = [ pr21, pr45 ];
 
     assert.equal(reducer.notificationsForReviewedPRs.length, 1);
