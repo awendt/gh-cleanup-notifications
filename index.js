@@ -17,33 +17,35 @@ console.debug(options);
 const github = new GitHubClient(options);
 const me = await github.me();
 
+const processRule = async (rule, notifications) => {
+  switch(rule.action) {
+    case "mark-as-done":
+      await github.markAsDone(notifications);
+      break;
+    case "unsubscribe":
+      await github.unsubscribe(notifications);
+      break;
+    default:
+      throw new Error(`Unknown action "${rule.action}"`);
+  }
+};
+
 const doWork = async () => {
   const notifications = await github.notifications();
 
   const reducer = new NotificationReducer({ notifications, me });
   reducer.pullRequests = await github.batchRequests(reducer.pullNotifications.map(n => n.subject.url));
 
-  // Case 1: notifications for closed PRs => marking as done
-  if (options.cleanupClosedPrs) {
-    const notificationsForClosedPRs = reducer.notificationsForClosedPRs;
-    console.debug("%d notifications for closed PRs, marking as done…", notificationsForClosedPRs.length);
-    notificationsForClosedPRs.forEach(notification => console.debug(notification.pull_request.html_url));
-    await github.markAsDone(notificationsForClosedPRs);
-  }
+  // Find intersection between options and built-in rules
+  const relevantRules = Object.keys(reducer.builtinRules).filter(rule => Object.keys(options).includes(rule))
+  for (const ruleName of relevantRules) {
+    const rule = reducer.builtinRules[ruleName];
+    const matchedNotifications = reducer.applyRules(...Object.entries(rule.match));
 
-  // Case 2: subscribed but someone else already assigned
-  if (options.cleanupReassignedPrs) {
-    const someoneElseAssigned = reducer.notificationsForReassignedPRs;
-    console.debug("%d notifications for PRs assigned to someone else, unsubscribing…", someoneElseAssigned.length);
-    someoneElseAssigned.forEach(notification => console.debug(notification.pull_request.html_url));
-    await github.unsubscribe(someoneElseAssigned);
-  }
+    if (rule.log) { console.debug(rule.log, matchedNotifications.length); }
+    matchedNotifications.forEach(notification => console.debug("  ", notification.pull_request.html_url));
 
-  // Case 3: review requested but no reviews pending
-  if (options.cleanupReviewedPrs) {
-    const reviewRequestedAndReviewed = reducer.notificationsForReviewedPRs;
-    console.debug("%d notifications for PRs requesting and gotten reviews, unsubscribing…", reviewRequestedAndReviewed.length);
-    await github.unsubscribe(reviewRequestedAndReviewed);
+    await processRule(rule, matchedNotifications);
   }
 }
 
