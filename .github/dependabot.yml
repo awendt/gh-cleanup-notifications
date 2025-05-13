@@ -3,7 +3,7 @@ version: 2
 updates:
 - package-ecosystem: github-actions
   commit-message:
-    prefix: chore
+    prefix: build
     include: scope
   directory: /
   schedule:
@@ -13,7 +13,7 @@ updates:
     timezone: Europe/Berlin
 - package-ecosystem: npm
   commit-message:
-    prefix: chore
+    prefix: build
     include: scope
   directory: /
   schedule:
