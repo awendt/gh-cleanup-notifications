@@ -1,5 +1,6 @@
 import { GitHubClient } from "./lib/client.js";
 import { NotificationReducer } from "./lib/notification-reducer.js";
+import { readFileSync } from 'node:fs';
 
 const DEFAULT_INTERVAL = 60;
 
@@ -46,6 +47,18 @@ const doWork = async () => {
     matchedNotifications.forEach(notification => console.debug("  ", notification.pull_request.html_url));
 
     await processRule(rule, matchedNotifications);
+  }
+
+  if (options.configFile) {
+    const config = JSON.parse(readFileSync(options.configFile));
+    for (const rule of config.rules) {
+      const matchedNotifications = reducer.applyRules(...Object.entries(rule.match));
+
+      if (rule.log) { console.debug(rule.log, matchedNotifications.length); }
+      matchedNotifications.forEach(notification => console.debug("  ", notification.pull_request.html_url));
+
+      await processRule(rule, matchedNotifications);
+    }
   }
 }
 
