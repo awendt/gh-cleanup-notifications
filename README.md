@@ -54,11 +54,11 @@ If you want to see an option in action but are not yet ready to do any cleanup, 
 | `--cleanup-closed-prs`     | All notifications for closed pull requests will be marked as done.                                                                             |
 | `--cleanup-reassigned-prs` | All notifications with reason `subscribed` for pull requests that have been assigned to another person will be marked as done and unsubscribed |
 | `--cleanup-reviewed-prs`   | All notifications with reason `review_requested` for pull requests that have no pending reviews left will be marked as done and unsubscribed   |
-| `--config-file FILE`       | Use custom rules defined in the given file                                                                                                     |
+| `--config-file FILE`       | Use [custom rules](#using-custom-rules) defined in the given file                                                                              |
 | `--dry-run`                | Show the behavior but do not clean up any notifications.                                                                                       |
 | `--verbose`                | Print URLs as API requests are being sent.                                                                                                     |
 
-## Customizing
+## Using custom rules
 
 To customize notification handling, you can write a config file in JSON format. For instance, you can choose to mark all notifications for closed Dependabot PRs like this:
 
