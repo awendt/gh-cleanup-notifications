@@ -48,7 +48,7 @@
           },
           "action": {
             "description": "What should happen to this notification",
-            "enum": ["mark-as-done", "unsubscribe"]
+            "enum": ["assign-me", "mark-as-done", "unsubscribe"]
           }
         },
         "required": ["match", "action"],

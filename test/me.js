@@ -6,12 +6,17 @@ import { GitHubClient } from '../lib/client.js';
 const interceptor = new FetchInterceptor();
 
 describe('#me', async () => {
+  let requests;
+
   beforeEach(() => {
     interceptor.apply();
 
     interceptor.on('unhandledException', ({ error }) => console.log(error));
 
+    requests = [];
+
     interceptor.on('request', ({ request, controller }) => {
+      requests.push(`${request.method} ${request.url}`);
       switch(request.url) {
         case "https://api.github.com/user":
           controller.respondWith(Response.json(
@@ -30,5 +35,15 @@ describe('#me', async () => {
     const github = new GitHubClient({});
 
     assert.equal(await github.me(), 'awendt');
+  });
+
+  it('memoizes the result', async () => {
+    const github = new GitHubClient({});
+
+    await github.me();
+    await github.me();
+    assert.deepEqual(requests, [
+      "GET https://api.github.com/user", // called only once
+    ]);
   });
 });

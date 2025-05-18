@@ -60,11 +60,14 @@ If you want to see an option in action but are not yet ready to do any cleanup, 
 
 ## Using custom rules
 
-To customize notification handling, you can write a config file in JSON format. For instance, you can choose to mark all notifications for closed Dependabot PRs like this:
+To customize notification handling, you can write a config file in JSON format.
+
+<details open>
+<summary>Example 1: Mark notifications for closed Dependabot PRs as done</summary>
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/awendt/gh-cleanup-notifications/main/.gitignore/schemas/v1.config.json",
+  "$schema": "https://raw.githubusercontent.com/awendt/gh-cleanup-notifications/main/schemas/v1.config.json",
   "rules": [
     {
       "match": {
@@ -77,8 +80,29 @@ To customize notification handling, you can write a config file in JSON format. 
   ]
 }
 ```
+</details>
 
-Save this to `dependabot.json` and run:
+<details>
+<summary>Example 2: Assign Dependabot PRs to me</summary>
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/awendt/gh-cleanup-notifications/main/schemas/v1.config.json",
+  "rules": [
+    {
+      "match": {
+        "pull_request.user.login": [ "dependabot[bot]" ],
+        "pull_request.state": [ "open" ],
+      },
+      "log": "%d notifications for open PRs, assigning to me…",
+      "action": "assign-me"
+    }
+  ]
+}
+```
+</details>
+
+Save your config to an arbitrary JSON file (e.g. `dependabot.json`) and run:
 
 ```
 $ gh cleanup-notifications --verbose --dry-run --config-file dependabot.json | ts
