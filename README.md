@@ -84,4 +84,4 @@ Save this to `dependabot.json` and run:
 $ gh cleanup-notifications --verbose --dry-run --config-file dependabot.json | ts
 ```
 
-To make easier to author such files, a [JSON schema is included in the repo](./schemas/).
+To make it easier to author such files, a [JSON schema is included in the repo](./schemas/).
