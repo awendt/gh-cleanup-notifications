@@ -26,6 +26,9 @@ const processRule = async (rule, notifications) => {
     case "unsubscribe":
       await github.unsubscribe(notifications);
       break;
+    case "assign-me":
+      await github.assignMe(notifications);
+      break;
     default:
       throw new Error(`Unknown action "${rule.action}"`);
   }
