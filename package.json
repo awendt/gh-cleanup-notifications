@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
+    "next": "semantic-release --dry-run --plugins @semantic-release/commit-analyzer --branches $(git rev-parse --abbrev-ref HEAD)",
     "test": "node --test"
   },
   "keywords": [],
