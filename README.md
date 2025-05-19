@@ -105,7 +105,7 @@ To customize notification handling, you can write a config file in JSON format.
 Save your config to an arbitrary JSON file (e.g. `dependabot.json`) and run:
 
 ```
-$ gh cleanup-notifications --verbose --dry-run --config-file dependabot.json | ts
+$ gh cleanup-notifications --verbose --dry-run --config-file=dependabot.json | ts
 ```
 
 To make it easier to author such files, a [JSON schema is included in the repo](./schemas/).
