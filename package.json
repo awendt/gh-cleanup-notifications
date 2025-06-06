@@ -14,7 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@mswjs/interceptors": "^0.38.7",
-    "eslint": "^9.27.0",
+    "eslint": "^9.28.0",
     "semantic-release": "^24.2.5"
   },
   "commitlint": {
