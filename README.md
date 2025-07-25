@@ -17,7 +17,10 @@ A GitHub (`gh`) CLI extension to clean up your GitHub notifications.
 
 ## ⚡️ Usage
 
-It's recommended to install `moreutils` for the `ts` utility: `brew install moreutils`
+This extension requires a NodeJS runtime (v20 or later) on your machine.
+Other JS runtimes may work but are untested.
+
+Also, it's recommended to install `moreutils` for the `ts` utility: `brew install moreutils`
 
 Run
 
