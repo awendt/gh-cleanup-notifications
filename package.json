@@ -15,7 +15,7 @@
   "devDependencies": {
     "@mswjs/interceptors": "^0.39.6",
     "eslint": "^9.37.0",
-    "semantic-release": "^24.2.7"
+    "semantic-release": "^25.0.0"
   },
   "commitlint": {
     "rules": {
