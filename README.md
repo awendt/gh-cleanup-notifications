@@ -105,6 +105,26 @@ To customize notification handling, you can write a config file in JSON format.
 ```
 </details>
 
+<details>
+<summary>Example 3: Assign PRs with certain labels to me</summary>
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/awendt/gh-cleanup-notifications/main/schemas/v1.config.json",
+  "rules": [
+    {
+      "match": {
+        "reason": [ "subscribed" ],
+        "pull_request.labels.*.name": [ "question" ],
+      },
+      "log": "%d notifications for PRs with questions, assigning to me…",
+      "action": "assign-me"
+    }
+  ]
+}
+```
+</details>
+
 Save your config to an arbitrary JSON file (e.g. `dependabot.json`) and run:
 
 ```

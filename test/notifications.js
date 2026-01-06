@@ -37,7 +37,7 @@ describe('#notifications', async () => {
     const github = new GitHubClient({});
 
     const notifications = await github.notifications();
-    assert.equal(notifications.length, 3);
+    assert.equal(notifications.length, 4);
     assert.deepEqual(Object.keys(notifications[0]), [ 'id', 'unread', 'reason', 'updated_at', 'last_read_at', 'subject', 'repository', 'url', 'subscription_url' ]);
   });
 });
@@ -78,7 +78,7 @@ describe('#notifications with pagination', async () => {
     const github = new GitHubClient({});
 
     const notifications = await github.notifications();
-    assert.equal(notifications.length, 6);
+    assert.equal(notifications.length, 8);
     assert.ok(notifications.every(notification => notification.unread));
   });
 });
