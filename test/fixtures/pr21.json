@@ -32,5 +32,6 @@
   "merged_at": "2024-09-24T09:03:06Z",
   "merge_commit_sha": "123850dfbeddd3db19f572483e27ff2c1ce35527",
   "requested_reviewers": [],
-  "requested_teams": []
+  "requested_teams": [],
+  "labels": []
 }
