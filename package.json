@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@mswjs/interceptors": "^0.40.0",
+    "@mswjs/interceptors": "^0.41.2",
     "eslint": "^9.39.2",
     "semantic-release": "^25.0.2"
   },
