@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@mswjs/interceptors": "^0.41.9",
-    "eslint": "^9.39.2",
+    "eslint": "^10.6.0",
+    "globals": "^17.7.0",
     "semantic-release": "^25.0.5"
   },
   "commitlint": {
