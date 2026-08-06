@@ -14,7 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@mswjs/interceptors": "^0.41.9",
+    "@mswjs/interceptors": "^0.42.3",
     "eslint": "^10.8.0",
     "globals": "^17.9.0",
     "semantic-release": "^25.0.8"
