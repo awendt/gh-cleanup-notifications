@@ -15,7 +15,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@mswjs/interceptors": "^0.41.9",
-    "eslint": "^10.7.0",
+    "eslint": "^10.8.0",
     "globals": "^17.9.0",
     "semantic-release": "^25.0.8"
   },
